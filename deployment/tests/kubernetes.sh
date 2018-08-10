@@ -4,15 +4,15 @@ set -e
 
 # login to IBM Bluemix via credentials provided via (encrypted) environment
 # variables
-bluemix login \
+yes n | bluemix login \
   --apikey "${BLUEMIX_API_KEY}" \
   -a "${BLUEMIX_API_ENDPOINT}"
 
-bluemix cs init \
+yes n | bluemix cs init \
   --host "${BLUEMIX_CONTAINER_SERVICE_HOST}"
 
 # Get the required configuration for `kubectl` from Bluemix and load it
-bluemix cs cluster-config \
+yes n | bluemix cs cluster-config \
   --export "${BLUEMIX_CONTAINER_SERVICE_CLUSTER_NAME}" \
   > .kubectl_config
 source .kubectl_config && rm -rf .kubectl_config
