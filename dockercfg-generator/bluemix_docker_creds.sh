@@ -7,9 +7,9 @@ set -e
 
 # Logging into IBM Bluemix
 echo "Logging into IBM Bluemix"
-bluemix login --apikey "${BLUEMIX_API_KEY}" -a "${BLUEMIX_API_ENDPOINT}"
-bluemix cs init
-bluemix cr login
+yes n | bluemix login --apikey "${BLUEMIX_API_KEY}" -a "${BLUEMIX_API_ENDPOINT}"
+yes n | bluemix cs init
+yes n | bluemix cr login
 
 # writing aws docker creds to desired path
 echo "Writing Docker creds to $1"
